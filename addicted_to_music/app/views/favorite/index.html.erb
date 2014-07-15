@@ -1,2 +1,7 @@
-<h1>Favorite#index</h1>
-<p>Find me in app/views/favorite/index.html.erb</p>
+<h2>Youtube</h1>
+  <% @youtube.each do |y| %>
+    <% link_to y[:title], y[:url], { target: "_blank" } %>
+    <br>
+  <% end %>
+  <br>
+  <%= link_to "search add", "http://www.youtube.com/result?search_query=#{key}", { target: "_blank" }
