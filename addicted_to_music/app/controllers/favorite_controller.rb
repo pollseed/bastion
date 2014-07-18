@@ -1,5 +1,9 @@
 class FavoriteController < ApplicationController
-  def index
+  def test
+  end
+  def show
+  end
+  def youtube
     @youtube = {}
 
     return if params[:search_keys].blank? || params[:search_keys][:name].blank?

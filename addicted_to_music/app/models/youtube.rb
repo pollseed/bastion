@@ -2,7 +2,7 @@ require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 
-class Youtube < ActiveResource::Base
+class Youtube < ActiveRecord::Base
 
   URL = 'http://gdata.youtube.com/feeds/api/videos?vq='
 
@@ -19,8 +19,7 @@ class Youtube < ActiveResource::Base
     doc.search('entry').each do |entry|
       article = Article.new
       article.title = entry.search('title').text
-      article.youtube_video = entry.xpath('media:group/media:player').first['url'].scan(/¥bv=¥w*/)[0].delete('v=')
-      article.push(article)
+      article.url = entry.xpath('media:group/media:player').first['url']
     end
 
     return articles

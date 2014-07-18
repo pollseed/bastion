@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714164503) do
+ActiveRecord::Schema.define(version: 20140717003833) do
+
+  create_table "articles", force: true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "youtubes", force: true do |t|
     t.datetime "created_at"

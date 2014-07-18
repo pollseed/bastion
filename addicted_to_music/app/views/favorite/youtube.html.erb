@@ -1,0 +1,15 @@
+<h2>Youtube</h1>
+  <span>検索ワード「<%= @keywords %>」の出力結果になります。</span>
+  <% @youtube.each do |y| %>
+    <img src="http://img.youtube.com/vi/foo/0.jpg" alt="alt here..." />
+    <% link_to y[:title], y[:url], { target: "_blank" } %>
+    <br>
+  <% end %>
+  <% if @youtube.blank? %>
+    <hr>
+
+    検索結果はありませんでした。
+  <% end %>
+  <br>
+
+  <!-- <%= link_to "search add", "http://www.youtube.com/result?search_query=#{key}", { target: "_blank" } -->
