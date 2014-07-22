@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :articles
 
   root to: 'welcome#index'
+  get 'top/crawl'
   post 'favorite/youtube' => 'favorite#youtube'
   # get 'setting/index'
   #
