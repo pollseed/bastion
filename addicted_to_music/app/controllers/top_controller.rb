@@ -1,4 +1,4 @@
-
+require 'open-uri'
 require 'nokogiri'
 
 class TopController < ApplicationController
@@ -6,8 +6,13 @@ class TopController < ApplicationController
   end
 
   def crawl
+    # crawl_google
     crawl_hatena
     crawl_qiita
+  end
+
+  def crawl_google
+    open('http://www.google.com')
   end
 
   def crawl_hatena

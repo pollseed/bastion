@@ -66,19 +66,19 @@
         <th>title</th>
       </tr>
     </thead>
-    <% count = 1 %>
     <% disp = 1 %>
     <% @row.each do |r| %>
       <% unless r.inner_html.empty? %>
         <tr>
-          <% if (count - 1) % 6 == 0 %>
-            <td colspan="2"><b><%= r.inner_html.match(/alt="(.+?)"/)[1].gsub(/¥"/, '') %></b></td>
+          <% if r.inner_html.match(/alt="(.+?)"/) != nil %>
+            <td colspan="2"><b>
+              <%= r.inner_html.match(/alt="(.+?)"/)[1].gsub(/¥"/, '') %>
+            </b></td>
           <% else %>
             <td><%= disp %></td>
             <td><%= r.inner_html %></td>
             <% disp += 1 %>
           <% end %>
-          <% count += 1 %>
         </tr>
       <% end %>
     <% end %>
