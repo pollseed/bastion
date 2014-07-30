@@ -14,5 +14,6 @@ class FavoriteController < ApplicationController
     @keywords = params[:search_keys][:name]
     @keywords = @keywords.gsub(" ", "+").gsub("　", "+")
     @youtube = Youtube.search(@keywords)
+
   end
 end

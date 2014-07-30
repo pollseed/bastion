@@ -17,3 +17,23 @@
       <div>
         <%= link_to "crawl! test >>", '/top/crawl', :class => "btn btn-success btn-lg" %>
       </div>
+<bR>
+  <% count = 0 %>
+    <table border=1>
+      <tr>
+        <th>#</th>
+        <th>title</th>
+        <th>url</th>
+        <th>date</th>
+      </tr>
+      <% loop { %>
+        <tr>
+          <td><%= count + 1 %></td>
+          <td><%= @map4[0][count] %></td>
+          <td><%= @map4[1][count] %></td>
+          <td><%= @map4[2][count] %></td>
+        </tr>
+        <% count += 1 %>
+        <% if count == @map4[0].size then break end %>
+      <% } %>
+    </table>
