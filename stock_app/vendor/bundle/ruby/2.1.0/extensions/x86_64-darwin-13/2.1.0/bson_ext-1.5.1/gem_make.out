@@ -1,0 +1,70 @@
+/usr/local/Cellar/ruby/2.1.1/bin/ruby extconf.rb 
+checking for asprintf()... yes
+checking for ruby/st.h... yes
+checking for ruby/regex.h... yes
+checking for ruby/encoding.h... yes
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling bson_buffer.c
+compiling cbson.c
+cbson.c:118:36: warning: passing 'char *' to parameter of type 'const unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
+    result_t status = check_string(RSTRING_PTR(string), RSTRING_LEN(string),
+                                   ^~~~~~~~~~~~~~~~~~~
+/usr/local/Cellar/ruby/2.1.1/include/ruby-2.1.0/ruby/ruby.h:846:5: note: expanded from macro 'RSTRING_PTR'
+    (!(RBASIC(str)->flags & RSTRING_NOEMBED) ? \
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./encoding_helpers.h:26:44: note: passing argument to parameter 'string' here
+result_t check_string(const unsigned char* string, const int length,
+                                           ^
+cbson.c:118:57: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
+    result_t status = check_string(RSTRING_PTR(string), RSTRING_LEN(string),
+                      ~~~~~~~~~~~~                      ^~~~~~~~~~~~~~~~~~~
+/usr/local/Cellar/ruby/2.1.1/include/ruby-2.1.0/ruby/ruby.h:843:6: note: expanded from macro 'RSTRING_LEN'
+     RSTRING_EMBED_LEN(str) : \
+     ^~~~~~~~~~~~~~~~~~~~~~
+/usr/local/Cellar/ruby/2.1.1/include/ruby-2.1.0/ruby/ruby.h:839:6: note: expanded from macro 'RSTRING_EMBED_LEN'
+     (long)((RBASIC(str)->flags >> RSTRING_EMBED_LEN_SHIFT) & \
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cbson.c:118:57: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
+    result_t status = check_string(RSTRING_PTR(string), RSTRING_LEN(string),
+                      ~~~~~~~~~~~~                      ^~~~~~~~~~~~~~~~~~~
+/usr/local/Cellar/ruby/2.1.1/include/ruby-2.1.0/ruby/ruby.h:844:28: note: expanded from macro 'RSTRING_LEN'
+     RSTRING(str)->as.heap.len)
+     ~~~~~~~~~~~~~~~~~~~~~~^~~
+cbson.c:128:45: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
+    SAFE_WRITE(buffer, RSTRING_PTR(string), RSTRING_LEN(string));
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+/usr/local/Cellar/ruby/2.1.1/include/ruby-2.1.0/ruby/ruby.h:843:6: note: expanded from macro 'RSTRING_LEN'
+     RSTRING_EMBED_LEN(str) : \
+     ^
+/usr/local/Cellar/ruby/2.1.1/include/ruby-2.1.0/ruby/ruby.h:839:6: note: expanded from macro 'RSTRING_EMBED_LEN'
+     (long)((RBASIC(str)->flags >> RSTRING_EMBED_LEN_SHIFT) & \
+     ^
+cbson.c:68:46: note: expanded from macro 'SAFE_WRITE'
+    if (bson_buffer_write((buffer), (data), (size)) != 0)                    \
+                                             ^
+cbson.c:128:45: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
+    SAFE_WRITE(buffer, RSTRING_PTR(string), RSTRING_LEN(string));
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+/usr/local/Cellar/ruby/2.1.1/include/ruby-2.1.0/ruby/ruby.h:844:28: note: expanded from macro 'RSTRING_LEN'
+     RSTRING(str)->as.heap.len)
+                           ^
+cbson.c:68:46: note: expanded from macro 'SAFE_WRITE'
+    if (bson_buffer_write((buffer), (data), (size)) != 0)                    \
+                                             ^
+cbson.c:303:20: warning: unused variable 'values' [-Wunused-variable]
+            VALUE* values;
+                   ^
+cbson.c:602:18: warning: implicit declaration of function 'bson_buffer_get_max_size' is invalid in C99 [-Wimplicit-function-declaration]
+    if (length > bson_buffer_get_max_size(buffer)) {
+                 ^
+7 warnings generated.
+compiling encoding_helpers.c
+linking shared-object bson_ext/cbson.bundle
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cbson.bundle ./.gem.20140802-16469-1vmwv1w/bson_ext
+installing default cbson libraries
